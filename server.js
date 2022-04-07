@@ -31,7 +31,7 @@ const server = app.listen(port, () => {
 
 io = socket(server, { 
     cors: { 
-        origin: ["https://my-frontend.com", "http://localhost:3001", "http://localhost:3000"],
+        origin: ["https://chat-globo.herokuapp.com", "http://localhost:3001", "http://localhost:3000"],
         methods: ["GET", "POST"],
         credentials: true
     },
