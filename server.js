@@ -4,8 +4,17 @@ const cors = require('cors');
 
 const app = express()
 
-app.use(cors({ origin: true }));
+//app.use(cors({ origin: true }));
+app.use(cors())
+
 app.use(express.static("public"))
+
+app.use((req,res, next)=>{
+    res.setHeader('Access-Control-Allow-Origin',"http://localhost:3000");
+    res.setHeader('Access-Control-Allow-Headers',"*");
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 
 const http = require('http').Server(app)
