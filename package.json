@@ -20,5 +20,8 @@
     "socket.io"
   ],
   "author": "Marcio Carvalho",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "cors": "^2.8.5"
+  }
 }
