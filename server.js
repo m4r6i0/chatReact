@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== "production") {
   
   const whitelist = domainsFromEnv.split(",").map(item => item.trim())
   console.log(whitelist);
-  
+
   const corsOptions = {
     origin: function (origin, callback) {
       if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -28,6 +28,7 @@ if (process.env.NODE_ENV !== "production") {
     credentials: true,
   }
   app.use(cors(corsOptions))
+  app.use(express.static("public"));
 
 
 const http = require('http').Server(app)
