@@ -37,9 +37,7 @@ const server = require('http').Server(app);
 
 const socket = socketio(server, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["content-type"],
+    origin: "http://localhost:3001",
   },
 });
 
@@ -55,7 +53,7 @@ server.listen(porta, function(){
 })
 
 app.get('/', function (requisicao, resposta) {
-    resposta.send({message: "Server On"});
+    resposta.send({message: "Server On Cors-10"});
 })
 
 
