@@ -4,17 +4,18 @@ const cors = require('cors');
 
 const app = express()
 
-//app.use(cors({ origin: true }));
-app.use(cors())
-
-app.use(express.static("public"))
-
-app.use((req,res, next)=>{
-    res.setHeader('Access-Control-Allow-Origin',"http://localhost:3000");
-    res.setHeader('Access-Control-Allow-Headers',"*");
-    res.header('Access-Control-Allow-Credentials', true);
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
-});
+}
+app.configure(function() {
+    app.use(allowCrossDomain);
+    app.use(express.static("public"));
+    console.log('configure cors');
+}); 
+
 
 
 const http = require('http').Server(app)
