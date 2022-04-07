@@ -15,6 +15,7 @@ if (process.env.NODE_ENV !== "production") {
   const domainsFromEnv = process.env.CORS_DOMAINS || ""
   
   const whitelist = domainsFromEnv.split(",").map(item => item.trim())
+  console.log(whitelist);
   
   const corsOptions = {
     origin: function (origin, callback) {
