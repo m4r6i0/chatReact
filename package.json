@@ -22,6 +22,7 @@
   "author": "Marcio Carvalho",
   "license": "MIT",
   "devDependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0"
   }
 }

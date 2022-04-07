@@ -4,9 +4,29 @@ const cors = require('cors');
 
 const app = express()
 
-app.use(cors());
-app.options('*', cors());
-app.use(express.static("public"));
+// app.use(cors());
+// app.options('*', cors());
+// app.use(express.static("public"));
+
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config()
+  }
+  
+  const domainsFromEnv = process.env.CORS_DOMAINS || ""
+  
+  const whitelist = domainsFromEnv.split(",").map(item => item.trim())
+  
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (!origin || whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error("Not allowed by CORS"))
+      }
+    },
+    credentials: true,
+  }
+  app.use(cors(corsOptions))
 
 
 const http = require('http').Server(app)
@@ -25,7 +45,7 @@ http.listen(porta, function(){
 })
 
 app.get('/', function (requisicao, resposta) {
-    resposta.sendStatus(200)
+    resposta.send({message: "Server On"});
 })
 
 
