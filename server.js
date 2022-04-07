@@ -38,6 +38,7 @@ serverSocket.on('connect', function(socket){
         
     socket.on('chat msg', function(msg){
         serverSocket.emit('chat msg', `${socket.nickname} diz: ${msg}`)
+        console.log('Mensagem ->' + msg);
     })
 
     socket.on('status', function(msg){
